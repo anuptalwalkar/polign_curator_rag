@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "polign-curator-rag"
+version = "0.1.0"
+description = "A reviewed, multimodal, multi-collection RAG demo for polign_db"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { file = "LICENSE" }
+dependencies = [
+  "openai>=2.8,<3",
+  "polign>=0.5,<1",
+]
+
+[project.scripts]
+polign-curator = "polign_curator.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/polign_curator"]
+
