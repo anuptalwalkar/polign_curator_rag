@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Optional, Sequence
 
 from .embeddings import HashingEmbedder, OpenAIEmbedder
+from .env import load_project_env
 from .llm import OpenAIReasoner
 from .pipeline import CuratorPipeline
 from .store import PolignRAGStore, load_seed_data
@@ -41,6 +42,8 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main(argv: Optional[Sequence[str]] = None) -> int:
+    project_root = Path(__file__).resolve().parents[2]
+    load_project_env(project_root / ".env")
     args = build_parser().parse_args(argv)
     from polign import Client
 
@@ -48,7 +51,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     store = PolignRAGStore(Client(args.polign_url), embedder)
 
     if args.command == "seed":
-        data_dir = Path(__file__).resolve().parents[2] / "data"
+        data_dir = project_root / "data"
         if not data_dir.exists():
             data_dir = Path.cwd() / "data"
         candidates, contexts = load_seed_data(str(data_dir))

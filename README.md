@@ -56,7 +56,8 @@ summary stage only runs after both checks pass.
 ## Run it
 
 Prerequisites: Python 3.9+, `polign-server`, and an OpenAI API key for reasoning
-and conditional image inspection.
+and conditional image inspection. The CLI automatically loads an ignored
+project-local `.env` file; exported environment variables take precedence.
 
 ```bash
 python3 -m venv .venv
@@ -72,7 +73,8 @@ polign-server -data ./curator.polign
 .venv/bin/polign-curator remember preferred_mood "quiet and contemplative"
 .venv/bin/polign-curator remember avoid_theme "industrial triumphalism" --kind constraint
 
-export OPENAI_API_KEY=...
+cp .env.example .env
+# Edit .env and set OPENAI_API_KEY. Never commit this file.
 .venv/bin/polign-curator ask \
   "Choose two works for a room about humans reshaping nature. Compare their visible composition, respect my preferences, and explain the contrast."
 ```
@@ -161,4 +163,3 @@ src/polign_curator/pipeline.py deterministic orchestration and hard review check
 src/polign_curator/cli.py   seed, remember, inspect, and ask commands
 tests/                      dependency-free unit tests with an in-memory client
 ```
-
