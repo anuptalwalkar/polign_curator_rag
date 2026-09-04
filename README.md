@@ -9,6 +9,11 @@ passes.
 
 The demo uses [polign_db](https://polign.com) for every durable or retrieved
 artifact. It is deliberately small, observable, and suitable for a live demo.
+The slower-paced recording presents the workflow as a visual tour: collection
+architecture, live database state, artwork evidence cards, an animated retrieval
+trace, and the reviewer fail/revise/pass gate. The artwork cards are
+palette/composition abstractions; the observations shown were derived from the
+actual NGA images during the verified run.
 
 ![Recorded demo: durable memory, scoped retrieval, cached visual evidence, review, and summary](demo.gif)
 
