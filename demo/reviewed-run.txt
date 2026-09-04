@@ -1,0 +1,29 @@
+  -> recalled 2 active memories from curator_memory
+  -> retrieved 6 eligible works from nga_candidates
+     filter: candidate_set='river-and-landscape-2026', eligible=true
+  -> visual decision: needed=True
+     edge cropping, depth cues, and brushwork require the actual images
+  -> reused visual_cache observation for nga-74796
+  -> reused visual_cache observation for nga-61371
+  -> retrieved 6 supporting passages from art_context
+  -> created evidence-tagged draft
+  -> independent review score=80, passed=False
+  -> revised draft once from reviewer feedback
+  -> final review score=96, passed=True
+  -> summarized reviewed draft
+
+Review: 96/100, passed=true
+
+In short
+- Choose Monet's The Japanese Footbridge for the quiet contemplative room.
+  Tight upper cropping, shallow depth, and interwoven brushwork make the
+  visual field more enclosing and settled. [IMG:visual-6249ffa81ccc66a74e68]
+  [CTX:ctx-footbridge-enclosure]
+- Van Gogh's Flower Beds in Holland has stronger recession and repeated
+  directional rows, producing a more forward-driving composition.
+  [IMG:visual-fc1f5f0ea63f02311e0f] [CAND:nga-61371]
+
+Sources
+https://www.nga.gov/artworks/74796-japanese-footbridge
+https://www.nga.gov/artworks/61371-flower-beds-holland
+

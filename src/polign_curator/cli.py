@@ -36,6 +36,7 @@ def build_parser() -> argparse.ArgumentParser:
     ask.add_argument("--model", default=os.getenv("OPENAI_MODEL", "gpt-5.4"))
     ask.add_argument("--reviewer-model", default=os.getenv("OPENAI_REVIEWER_MODEL", ""))
     ask.add_argument("--json", action="store_true")
+    ask.add_argument("--summary", action="store_true", help="show the trace and final In short section")
 
     sub.add_parser("collections", help="show collection record counts")
     return parser
@@ -80,11 +81,24 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             "trace": result.trace,
             "evidence": [item.__dict__ for item in result.evidence],
         }, indent=2))
+    elif args.summary:
+        for line in result.trace:
+            print(f"  -> {line}")
+        print(f"\nReview: {result.review.score}/100, passed={result.review.passed}")
+        print("\n" + _short_answer(result.answer))
     else:
         for line in result.trace:
             print(f"  -> {line}")
         print("\n" + result.answer)
     return 0
+
+
+def _short_answer(answer: str) -> str:
+    for marker in ("**In short**", "In short"):
+        position = answer.rfind(marker)
+        if position >= 0:
+            return answer[position:]
+    return answer
 
 
 if __name__ == "__main__":

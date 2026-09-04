@@ -10,6 +10,10 @@ passes.
 The demo uses [polign_db](https://polign.com) for every durable or retrieved
 artifact. It is deliberately small, observable, and suitable for a live demo.
 
+![Recorded demo: durable memory, scoped retrieval, cached visual evidence, review, and summary](demo.gif)
+
+[Download the asciinema recording](demo.cast)
+
 ## The four collections
 
 | Collection | Access | Contents | Why it is separate |
@@ -104,6 +108,18 @@ guidance. Text reasoning also uses stateless Responses API calls so the durable
 state remains Polign, not provider conversation history.
 
 ## Demo script
+
+Re-record the embedded terminal demo after starting Polign and seeding the
+collections:
+
+```bash
+./scripts/record-demo.sh
+```
+
+The checked-in recording replays the trace and concise result from a verified
+live run while querying the current Polign collection and memory state. It makes
+no OpenAI call, never reads the API key, and does not re-send artwork images.
+The replay transcript is [demo/reviewed-run.txt](demo/reviewed-run.txt).
 
 A good live sequence makes all boundaries visible:
 

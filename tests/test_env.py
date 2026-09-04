@@ -4,6 +4,7 @@ import unittest
 from pathlib import Path
 
 from polign_curator.env import load_project_env
+from polign_curator.cli import _short_answer
 
 
 class EnvTests(unittest.TestCase):
@@ -21,7 +22,10 @@ class EnvTests(unittest.TestCase):
                 os.environ.pop("DEMO_NEW", None)
                 os.environ.pop("DEMO_EXISTING", None)
 
+    def test_short_answer_keeps_the_final_summary(self):
+        answer = "Long evidence.\n\n**In short**\n- Pick Monet."
+        self.assertEqual("**In short**\n- Pick Monet.", _short_answer(answer))
+
 
 if __name__ == "__main__":
     unittest.main()
-
